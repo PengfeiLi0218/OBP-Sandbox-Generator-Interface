@@ -1,0 +1,146 @@
+[
+    {
+        "customer_number": "20fada59-00d4-44ad-b377-c70c48e04052",
+        "legal_name": "Juan Smith",
+        "mobile_phone_number": "308-383-7499",
+        "email": "Juan@gmail.com",
+        "face_image": {
+            "url": "www.example.com",
+            "date": "2018-02-25T20:06:13Z"
+        },
+        "date_of_birth": "1983-10-30T20:57:13Z",
+        "relationship_status": "Married",
+        "dependants": 6,
+        "dob_of_dependants": [
+            "2018-03-26T05:12:58Z",
+            "2018-01-06T04:24:56Z"
+        ],
+        "highest_education_attained": "BA.",
+        "employment_status": "Retired",
+        "kyc_status": true,
+        "last_ok_date": "2019-01-02T12:38:01Z",
+        "bank_id": "bmci",
+        "credit_rating": "",
+        "credit_limit": ""
+    },
+    {
+        "customer_number": "9acdd25d-211e-4e0f-9e87-98c1ec34bc9b",
+        "legal_name": "Juan Smith",
+        "mobile_phone_number": "308-383-7499",
+        "email": "Juan@gmail.com",
+        "face_image": {
+            "url": "www.example.com",
+            "date": "2018-04-25T08:45:03Z"
+        },
+        "date_of_birth": "1996-01-03T01:27:53Z",
+        "relationship_status": "Married",
+        "dependants": 3,
+        "dob_of_dependants": [
+            "2018-09-07T13:20:57Z",
+            "2018-12-26T09:18:24Z"
+        ],
+        "highest_education_attained": "BA.",
+        "employment_status": "Retired",
+        "kyc_status": true,
+        "last_ok_date": "2018-05-09T12:09:19Z",
+        "bank_id": "at",
+        "credit_rating": "",
+        "credit_limit": ""
+    },
+    {
+        "customer_number": "d3d044d0-b18e-4f20-97d6-8ad2e2d61976",
+        "legal_name": "Juan Smith",
+        "mobile_phone_number": "308-383-7499",
+        "email": "Juan@gmail.com",
+        "face_image": {
+            "url": "www.example.com",
+            "date": "2018-11-06T03:15:30Z"
+        },
+        "date_of_birth": "1972-12-13T04:13:22Z",
+        "relationship_status": "Married",
+        "dependants": 4,
+        "dob_of_dependants": [
+            "2018-04-05T01:28:00Z",
+            "2019-03-29T11:58:55Z"
+        ],
+        "highest_education_attained": "BA.",
+        "employment_status": "Retired",
+        "kyc_status": true,
+        "last_ok_date": "2018-01-06T13:25:25Z",
+        "bank_id": "bendigo",
+        "credit_rating": "",
+        "credit_limit": ""
+    },
+    {
+        "customer_number": "711ae330-0fb2-46ce-a861-43f6e820582b",
+        "legal_name": "Martha Johnson",
+        "mobile_phone_number": "762-475-3925",
+        "email": "Martha@tesobe.com",
+        "face_image": {
+            "url": "www.example.com",
+            "date": "2018-05-01T20:51:43Z"
+        },
+        "date_of_birth": "1985-10-21T07:13:18Z",
+        "relationship_status": "Engaged",
+        "dependants": 5,
+        "dob_of_dependants": [
+            "2018-10-24T12:29:14Z",
+            "2019-02-06T14:18:48Z"
+        ],
+        "highest_education_attained": "BA.",
+        "employment_status": "Employed",
+        "kyc_status": true,
+        "last_ok_date": "2018-06-03T07:47:57Z",
+        "bank_id": "bmci",
+        "credit_rating": "",
+        "credit_limit": ""
+    },
+    {
+        "customer_number": "20b19e5c-c597-45f8-9f4d-eea44e83e869",
+        "legal_name": "Martha Johnson",
+        "mobile_phone_number": "762-475-3925",
+        "email": "Martha@tesobe.com",
+        "face_image": {
+            "url": "www.example.com",
+            "date": "2018-01-02T05:48:15Z"
+        },
+        "date_of_birth": "2001-02-18T14:36:29Z",
+        "relationship_status": "Engaged",
+        "dependants": 4,
+        "dob_of_dependants": [
+            "2018-07-04T05:43:51Z",
+            "2018-06-27T14:10:20Z"
+        ],
+        "highest_education_attained": "BA.",
+        "employment_status": "Employed",
+        "kyc_status": true,
+        "last_ok_date": "2019-11-29T14:19:48Z",
+        "bank_id": "at",
+        "credit_rating": "",
+        "credit_limit": ""
+    },
+    {
+        "customer_number": "b6ab7896-7590-430e-8211-05af7f1b1a86",
+        "legal_name": "Martha Johnson",
+        "mobile_phone_number": "762-475-3925",
+        "email": "Martha@tesobe.com",
+        "face_image": {
+            "url": "www.example.com",
+            "date": "2019-08-25T22:17:30Z"
+        },
+        "date_of_birth": "1997-11-13T04:50:42Z",
+        "relationship_status": "Engaged",
+        "dependants": 6,
+        "dob_of_dependants": [
+            "2019-06-09T03:36:00Z",
+            "2019-09-14T21:49:20Z"
+        ],
+        "highest_education_attained": "BA.",
+        "employment_status": "Employed",
+        "kyc_status": true,
+        "last_ok_date": "2019-12-10T15:06:59Z",
+        "bank_id": "bendigo",
+        "credit_rating": "",
+        "credit_limit": ""
+    }
+]

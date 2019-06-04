@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static verbose_names %}
+
+{% block page_title %}{{ block.super }} / Run tests{% endblock page_title %}
+
+{% block content %}
+<div id="runtests">
+    <h1>Generate Json File</h1>
+    <div class="runner">
+        {% csrf_token %}
+        {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+
+                <div class="form-group">
+                    <label for="Country"><label for="Country">Country:</label></label>
+                    <input type="text" name="Country" value="{{mappings.COUNTRY}}" maxlength="25" class="form-control" required="" id="Country">
+                </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+
+                <div class="form-group">
+                    <label for="BANK_NUMBER"><label for="BANK_NUMBER">BANK_NUMBER:</label></label>
+                    <input type="text" name="BANK_NUMBER" value="{{mappings.BANK_NUMBER}}" maxlength="25" class="form-control" required="" id="BANK_NUMBER">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+
+                <div class="form-group">
+                    <label for="BRANCH_NUMBER"><label for="BRANCH_NUMBER">BRANCH_NUMBER:</label></label>
+                    <input type="text" name="BRANCH_NUMBER" value="{{mappings.BRANCH_NUMBER}}" maxlength="25" class="form-control" required="" id="BRANCH_NUMBER">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+
+                <div class="form-group">
+                    <label for="PRODUCT_NUMBER"><label for="PRODUCT_NUMBER">PRODUCT_NUMBER:</label></label>
+                    <input type="text" name="PRODUCT_NUMBER" value="{{mappings.PRODUCT_NUMBER}}" maxlength="25" class="form-control" required="" id="PRODUCT_NUMBER">
+                </div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>ATM_NUMBER:</label>
+                    <input type="text" name="ATM_NUMBER" value="{{mappings.ATM_NUMBER}}" maxlength="25" class="form-control" required="" id="ATM_NUMBER">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>MONTHS:</label>
+                    <input type="text" name="MONTHS" value="{{mappings.MONTHS}}" maxlength="25" class="form-control" required="" id="MONTHS">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>INPUT_PATH:</label>
+                    <input type="text" name="INPUT_PATH" value="{{mappings.INPUT_PATH}}" maxlength="25" class="form-control" required="" id="INPUT_PATH">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>OUTPUT_PATH:</label>
+                    <input type="text" name="OUTPUT_PATH" value="{{mappings.OUTPUT_PATH}}" maxlength="25" class="form-control" required="" id="OUTPUT_PATH">
+                </div>
+            </div>
+        </div>
+    <!--
+        <input type="checkbox" name="main" value="main" /> Main Json File  <br>
+        <input type="checkbox" name="counterpary" value="counterpary" /> Counterparty Json File<br>
+        <input type="checkbox" name="customer" value="customer" /> Customer Json File<br>
+    -->
+        <button class="btn btn-primary forGenerate" id="forGenerate">Generate</button>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+{% block extrajs %}
+<script type="text/javascript" src="{% static 'runtests/js/runtests.js' %}"></script>
+<script type="text/javascript">
+    URL_RUNTESTS_INDEX = "{% url 'runtests-index' %}";
+    CURRENT_PROFILE_ID = "{{  testconfigs.selected.pk }}"
+    CSRF = "{{ csrf_token }}"
+</script>
+{% endblock extrajs %}
+
+
+
+{% block extracss %}
+<link href="{% static 'runtests/css/runtests.css' %}" rel="stylesheet">
+{% endblock extracss %}

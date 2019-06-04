@@ -1,0 +1,13 @@
+[Unit]
+Description=API Tester
+
+[Service]
+Type=simple
+User=deploy
+Group=deploy
+SyslogIdentifier=API-Tester
+Restart=always
+ExecStart=/var/www/apitester/venv/bin/gunicorn --user deploy --group deploy --config /var/www/apitester/API-Tester/gunicorn.conf.py apitester.wsgi
+
+[Install]
+WantedBy=multi-user.target

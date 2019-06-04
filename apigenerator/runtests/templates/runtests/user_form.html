@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}{{ block.super }} / Add User Information{% endblock page_title %}
+
+{% block content %}
+<div id="runtests">
+    <h1>Add User Information</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.gender.errors }}
+                    <label for="gender">{{ form.gender.label_tag }}</label>
+                    {{ form.gender }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.relationship_status.errors }}
+                    <label for="relationship_status">{{ form.relationship_status.label_tag }}</label>
+                    {{ form.relationship_status }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.country.errors }}
+                    <label for="country">{{ form.country.label_tag }}</label>
+                    {{ form.country }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.employment_status.errors }}
+                    <label for="employment_status">{{ form.employment_status.label_tag }}</label>
+                    {{ form.employment_status }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.highest_education_attained.errors }}
+                    <label for="highest_education_attained">{{ form.highest_education_attained.label_tag }}</label>
+                    {{ form.highest_education_attained }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.savings.errors }}
+                    <label for="savings">{{ form.savings.label_tag }}</label>
+                    {{ form.savings }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.currents.errors }}
+                    <label for="currents">{{ form.currents.label_tag }}</label>
+                    {{ form.currents }}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.behavior.errors }}
+                    <label for="behavior">{{ form.behavior.label_tag }}</label>
+                    {{ form.behavior }}
+                </div>
+            </div>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Submit" />
+        {% if object.pk %}
+        <a href="{% url 'runtests-index-testconfig' testconfig_pk=object.pk %}" class="btn btn-secondary">Cancel</a>
+        {% else %}
+        <a href="{% url 'runtests-index' %}" class="btn btn-secondary">Cancel</a>
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}
+
+{% block extracss %}
+<link href="{% static 'runtests/css/runtests.css' %}" rel="stylesheet">
+{% endblock extracss %}

@@ -1,0 +1,9 @@
+*.swp
+*.pyc
+__pycache__/
+
+apigenerator/apigenerator/local_settings.py
+API-Tester.iml
+.idea
+venv/
+.DS_Store

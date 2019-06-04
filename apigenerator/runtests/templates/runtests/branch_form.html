@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}{{ block.super }} / Add Branch Information{% endblock page_title %}
+
+{% block content %}
+<div id="runtests">
+    <h1>Add Branch Information</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.Name.errors }}
+                    <label for="Name">{{ form.Name.label_tag }}</label>
+                    {{ form.Name }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.Address_1.errors }}
+                    <label for="Address_1">{{ form.Address_1.label_tag }}</label>
+                    {{ form.Address_1 }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.Address_2.errors }}
+                    <label for="Address_2">{{ form.Address_2.label_tag }}</label>
+                    {{ form.Address_2 }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.Address_3.errors }}
+                    <label for="Address_3">{{ form.Address_3.label_tag }}</label>
+                    {{ form.Address_3 }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.City.errors }}
+                    <label for="City">{{ form.City.label_tag }}</label>
+                    {{ form.City }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.County.errors }}
+                    <label for="County">{{ form.County.label_tag }}</label>
+                    {{ form.County }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.State.errors }}
+                    <label for="State">{{ form.State.label_tag }}</label>
+                    {{ form.State }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.Postcode.errors }}
+                    <label for="Postcode">{{ form.Postcode.label_tag }}</label>
+                    {{ form.Postcode }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.Country_code.errors }}
+                    <label for="Country_code">{{ form.Country_code.label_tag }}</label>
+                    {{ form.Country_code }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.latitude.errors }}
+                    <label for="latitude">{{ form.latitude.label_tag }}</label>
+                    {{ form.latitude }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.longitude.errors }}
+                    <label for="longitude">{{ form.longitude.label_tag }}</label>
+                    {{ form.longitude }}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.lobby.errors }}
+                    <label for="lobby">{{ form.lobby.label_tag }}</label>
+                    {{ form.lobby }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.Drive_up.errors }}
+                    <label for="Drive_up">{{ form.Drive_up.label_tag }}</label>
+                    {{ form.Drive_up }}
+                </div>
+            </div>
+
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Submit" />
+        {% if object.pk %}
+        <a href="{% url 'runtests-index-testconfig' testconfig_pk=object.pk %}" class="btn btn-secondary">Cancel</a>
+        {% else %}
+        <a href="{% url 'runtests-index' %}" class="btn btn-secondary">Cancel</a>
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}
+
+{% block extracss %}
+<link href="{% static 'runtests/css/runtests.css' %}" rel="stylesheet">
+{% endblock extracss %}

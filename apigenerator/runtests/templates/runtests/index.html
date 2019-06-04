@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static verbose_names %}
+
+{% block page_title %}{{ block.super }} / Run tests{% endblock page_title %}
+
+{% block content %}
+<div id="runtests">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-3">
+			<div class="form-group">
+				<input class="form-control" type="text" name="api_host" size="10" value="{{ mappings.API_HOST }}">
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock content %}
+
+
+
+{% block extrajs %}
+	<script type="text/javascript" src="{% static 'runtests/js/runtests.js' %}"></script>
+	<script type="text/javascript">
+		URL_RUNTESTS_INDEX = "{% url 'runtests-index' %}";
+		CURRENT_PROFILE_ID = "{{  testconfigs.selected.pk }}"
+        CSRF = "{{ csrf_token }}"
+	</script>
+{% endblock extrajs %}
+
+
+
+{% block extracss %}
+		<link href="{% static 'runtests/css/runtests.css' %}" rel="stylesheet">
+{% endblock extracss %}

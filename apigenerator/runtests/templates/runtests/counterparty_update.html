@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static verbose_names %}
+
+{% block page_title %}{{ block.super }} / Run tests{% endblock page_title %}
+
+{% block content %}
+<div id="runtests">
+    <h1>Update Counterparty Information</h1>
+    <form action="" method="post">
+        <ul id="test-list">
+            {% for call in calls %}
+            <div>
+                <li class="runner">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <input class="form-control" type="text" name="urlpath" size="10" value="{{ call.name }}">
+                        </div>
+                        <div class="col-xs-2">
+                            <input  class="form-control" type="text" name="order" size="10" value="{{  call.superCategory  }}" />
+                        </div>
+                        <div class="col-xs-2"><input  class="form-control" type="text" name="order" size="10" value="{{  call.superCategory  }}" /></div>
+                        <div class="col-xs-2"><input  class="form-control" type="text" name="replica_id" size="10" value="{{  call.logoUrl  }}" /></div>
+                        <div class="col-xs-2"><input  class="form-control" type="text" name="replica_id" size="10" value="{{  call.homePageUrl  }}" /></div>
+                        <div class="col-xs-1 col-sm-1">
+                            <button class="btn btn-default forSave" id="forSave">Save </button><span style="display: none;margin-left: 5px;background-color:#00cc00">saved.</span>
+                        </div>
+                        <div class="col-xs-12 col-sm-9 result"></div>
+
+
+                    </div>
+                </li>
+            </div>
+            {% endfor %}
+        </ul>
+
+        <input class="btn btn-primary" type="submit" value="Initialization" />
+        <input class="btn btn-primary" type="submit" value="Generate" />
+        {% if object.pk %}
+        <a href="{% url 'runtests-index-testconfig' testconfig_pk=object.pk %}" class="btn btn-secondary">Cancel</a>
+        {% else %}
+        <a href="{% url 'runtests-index' %}" class="btn btn-secondary">Cancel</a>
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}
+
+
+
+{% block extrajs %}
+<script type="text/javascript" src="{% static 'runtests/js/runtests.js' %}"></script>
+<script type="text/javascript">
+    URL_RUNTESTS_INDEX = "{% url 'runtests-index' %}";
+    CURRENT_PROFILE_ID = "{{  testconfigs.selected.pk }}"
+    CSRF = "{{ csrf_token }}"
+</script>
+{% endblock extrajs %}
+
+
+
+{% block extracss %}
+<link href="{% static 'runtests/css/runtests.css' %}" rel="stylesheet">
+{% endblock extracss %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}{{ block.super }} / Add Bank Information{% endblock page_title %}
+
+{% block content %}
+<div id="runtests">
+    <h1>Add Bank Information</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.Bank_ID.errors }}
+                    <label for="Bank_ID">{{ form.Bank_ID.label_tag }}</label>
+                    {{ form.Bank_ID }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.short_name.errors }}
+                    <label for="short_name">{{ form.short_name.label_tag }}</label>
+                    {{ form.short_name }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.full_name.errors }}
+                    <label for="full_name">{{ form.full_name.label_tag }}</label>
+                    {{ form.full_name }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.website.errors }}
+                    <label for="website">{{ form.website.label_tag }}</label>
+                    {{ form.website }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.logo.errors }}
+                    <label for="logo">{{ form.logo.label_tag }}</label>
+                    {{ form.logo }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.savings.errors }}
+                    <label for="savings">{{ form.savings.label_tag }}</label>
+                    {{ form.savings }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="form-group">
+                    {{ form.currency.errors }}
+                    <label for="currency">{{ form.currency.label_tag }}</label>
+                    {{ form.currency }}
+                </div>
+            </div>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Submit" />
+        {% if object.pk %}
+        <a href="{% url 'runtests-index-testconfig' testconfig_pk=object.pk %}" class="btn btn-secondary">Cancel</a>
+        {% else %}
+        <a href="{% url 'runtests-index' %}" class="btn btn-secondary">Cancel</a>
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}
+
+{% block extracss %}
+<link href="{% static 'runtests/css/runtests.css' %}" rel="stylesheet">
+{% endblock extracss %}
