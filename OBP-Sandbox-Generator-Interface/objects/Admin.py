@@ -103,7 +103,6 @@ class Admin:
         return self.session
 
     def get_user_private_account(self, api_host):
-
         result = self.session.get(api_host+"/obp/v1.2.1/accounts/private")
         if result.status_code==200:
             return result.content

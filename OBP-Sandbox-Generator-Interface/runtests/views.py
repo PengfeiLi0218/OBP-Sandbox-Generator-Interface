@@ -677,6 +677,7 @@ def ImportJson(request):
     file_json = Admin.load(settings.FILE_ROOT+"sandbox_pretty.json")
     url = api_host+"/obp/v3.0.0/sandbox/data-import"
     result2 = session.request('POST', url, json=file_json, verify=settings.VERIFY)
+    admin_user.oauth_logout()
     if result2.status_code==201:
         print("Update Successfully")
         return JsonResponse({'state': True})
@@ -700,6 +701,8 @@ def ImportCounterparty(request):
         user = Admin(user_dict['user_name'], user_dict['password'], consumer_key)
         print("login as user: ")
         session = user.direct_login(api_host)
+        if session is None:
+            continue
         print("get users private accounts")
         private_account = user.get_user_private_account(api_host)
         account_list = json.loads(private_account)['accounts']
