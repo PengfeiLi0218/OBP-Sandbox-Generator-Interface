@@ -660,7 +660,7 @@ def GenerateFile(request):
             "region":country
         })
 
-    with open('{}counterparty_pretty.json'.format(settings.OUTPUT_PATH), 'w') as outfile:
+    with open('{}counterparty_pretty.json'.format(output_path), 'w') as outfile:
         json.dump(df_list, outfile, default=lambda x: x.dict(), indent=4)
     return JsonResponse({'state': True})
 

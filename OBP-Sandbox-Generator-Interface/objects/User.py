@@ -3,9 +3,9 @@ import settings
 import pandas as pd
 from openpyxl import load_workbook
 
-from object.Account import Account
-from object.Customer import Customer
-from object.Routing import *
+from objects.Account import Account
+from objects.Customer import Customer
+from objects.Routing import *
 
 boy_first_names=('John','Andy','Joe')
 girl_first_names=('Alice','Ammy')

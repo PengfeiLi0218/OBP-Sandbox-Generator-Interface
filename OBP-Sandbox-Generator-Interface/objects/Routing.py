@@ -36,14 +36,14 @@ class Address:
                  postcode=random.choice(postcode_list),
                  country_code=random.choice(country_list)
                  ):
-        self.line1 = line1
-        self.line2 = line2
-        self.line3 = line3
-        self.city = city
-        self.county = county
-        self.state = state
+        self.line1 = str(line1)
+        self.line2 = str(line2)
+        self.line3 = str(line3)
+        self.city = str(city)
+        self.county = str(county)
+        self.state = str(state)
         self.postcode = str(postcode)
-        self.country_code = country_code
+        self.country_code = str(country_code)
 
     def dict(self):
         return {
@@ -189,5 +189,5 @@ top_merchants = \
 tags = list(spending_pcts.keys())
 
 
-lobby_default = {"hours": "M-TH 8:30-3:30, F 9-5"}
-driveup_default = {"hours": "M-Th 8:30-5:30, F-8:30-6, Sat 9-12"}
+lobby_default = "M-TH 8:30-3:30, F 9-5"
+driveup_default = "M-Th 8:30-5:30, F-8:30-6, Sat 9-12"

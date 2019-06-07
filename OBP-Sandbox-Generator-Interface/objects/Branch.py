@@ -2,8 +2,8 @@ import random
 import uuid
 import re
 import pandas as pd
-from object.Routing import lobby_default, driveup_default
-from object.Routing import Address, Location, Meta_list, Day, Routing, phone_number_generation
+from objects.Routing import lobby_default, driveup_default
+from objects.Routing import Address, Location, Meta_list, Day, Routing, phone_number_generation
 
 
 class Branch:
@@ -28,7 +28,7 @@ class Branch:
             "location": self.location,
             "meta": self.meta,
             "lobby": self.lobby,
-            "drive_up": self.drive_up
+            "driveUp": self.drive_up
         }
 
     @staticmethod

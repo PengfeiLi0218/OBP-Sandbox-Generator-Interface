@@ -27,12 +27,13 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					{% url "import-data" as import_data_url %}
-					<li {% if import_data_url in request.path  %} class="active"{% endif %}><a href="{{ import_data_url }}">Sandbox Dataset Import</a></li>
 					{% url "generate-json" as generate_json_url %}
 					<li {% if generate_json_url in request.path  %} class="active"{% endif %}><a href="{{ generate_json_url }}">Generate Json Files</a></li>
-					{% url "runtests-user-add" as user_add_url %}
+					{% url "import-data" as import_data_url %}
+					<li {% if import_data_url in request.path  %} class="active"{% endif %}><a href="{{ import_data_url }}">Sandbox Dataset Import</a></li>
+
 					<!--
+					{% url "runtests-user-add" as user_add_url %}
 					<li {% if user_add_url in request.path  %} class="active"{% endif %}><a href="{{ user_add_url }}">Add User Information</a></li>
 					{% url "runtests-bank-add" as bank_add_url %}
 					<li {% if bank_add_url in request.path  %} class="active"{% endif %}><a href="{{ bank_add_url }}">Add Bank Information</a></li>

@@ -107,37 +107,12 @@ OUTPUT_PATH = './output_path/'
 
 The application should be available at `http://localhost:9090`.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+### Json file Generation Page
+![alt text](./Image/page2.PNG "generate sandbox data")
+### Import Data Page
+![alt text](./Image/page1.PNG "Import sandbox data")
 
-# Installation (production)
-
-Execute the same steps as for development, but do not run the app.
-
-
-## Settings
-
-Edit `apitester/apitester/local_settings.py` for _additional_ changes to the development settings above:
-
-```python
-# Disable debug
-DEBUG = False
-# Hosts allowed to access the app
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '<your public hostname here>']
-# Directory to place static files in, defaults to `../static-collected` relative to this file
-STATIC_ROOT = '<dirname>'
-# Admins to send e.g. error emails to
-ADMINS = [
-        ('Admin', 'admin@example.com')
-]
-# Emails are sent from this address
-SERVER_EMAIL = 'apitester@example.com'
-# Emails are sent to this host
-EMAIL_HOST = 'mail.example.com'
-# Enable email security
-EMAIL_TLS = True
-```
-
-
+You need to prepare branches.xlsx, counterparties.xlsx, dataset.xlsx and options.xlsx. branches.xlsx involves
 ## Static files
 
 The app's static files, e.g. Javascript, CSS and images need to be collected and made available to a webserver. Run

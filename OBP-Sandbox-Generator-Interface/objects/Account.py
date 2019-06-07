@@ -2,8 +2,8 @@ import random
 import uuid
 from datetime import timedelta
 
-from object.Routing import digits11, Routing, generateIBAN, top_merchants, avg_txn_amts, add_deltatime, spending_frequency
-from object.Transaction import Transaction, generate_amt
+from objects.Routing import digits11, Routing, generateIBAN, top_merchants, avg_txn_amts, add_deltatime, spending_frequency
+from objects.Transaction import Transaction, generate_amt
 
 type_list = ["CURRENT", "SAVING"]
 currency_list = ["GBP"]
