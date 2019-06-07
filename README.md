@@ -89,9 +89,9 @@ OUTPUT_PATH = './output_path/'
 The application should be available at `http://localhost:9090`.
 
 ### Json file Generation Page
-![generation](Image/page2.png "generate sandbox data")
+![generation](Image/page1.png "generate sandbox data")
 ### Import Data Page
-![import sandbox](Image/page1.png "Import sandbox data")
+![import sandbox](Image/page2.png "Import sandbox data")
 
 You need to prepare dataset file: counterparties.xlsx, dataset.xlsx and options.xlsx. Sandbox data is picked 
 randomly from these dataset and generated to sandbox data. These files can be assigned in generation page.
