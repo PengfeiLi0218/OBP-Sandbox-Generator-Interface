@@ -55,7 +55,7 @@ COUNTRY='Hong Kong'
 ```
 ### Configure api host
 In the settings.py, you can set default values of related parameters. You can also set these parameters in web page.
-The application's authentication is API-driven. However, to make use of Django's authentication framework, sessions and to store test configurations, the system requires a database. Here is an example for PostgreSQL:
+The application's authentication is API-driven. However, to make use of Django's authentication framework to store generation parameter and import parameter. Here is an example for PostgreSQL:
 
 ```bash
 REDIRECT_URL = 'http://127.0.0.1:9090'
@@ -89,9 +89,9 @@ OUTPUT_PATH = './output_path/'
 The application should be available at `http://localhost:9090`.
 
 ### Json file Generation Page
-![alt text](Image/page2.png "generate sandbox data")
+![generation](Image/page2.png "generate sandbox data")
 ### Import Data Page
-![alt text](Image/page1.png "Import sandbox data")
+![import sandbox](Image/page1.png "Import sandbox data")
 
 You need to prepare dataset file: counterparties.xlsx, dataset.xlsx and options.xlsx. Sandbox data is picked 
 randomly from these dataset and generated to sandbox data. These files can be assigned in generation page.
