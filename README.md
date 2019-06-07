@@ -39,8 +39,22 @@ $ source ../venv/bin/activate
 ```
 
 ## Conifguration
-### Configure api host
+### Configure file generation settings
+In the settings.py, you can set default values of related parameters. You can also set these parameters in web page.
+```bash
+INPUT_PATH = "./input_file/"
+DATASET_PATH = "{}dataset.xlsx".format(INPUT_PATH)
+OPTIONS_PATH = "{}options.xlsx".format(INPUT_PATH)
 
+MONTHS = 36
+BANK_NUMBER=3
+BRANCH_NUMBER=4
+ATM_NUMBER=6
+PRODUCT_NUMBER=10
+COUNTRY='Hong Kong'
+```
+### Configure api host
+In the settings.py, you can set default values of related parameters. You can also set these parameters in web page.
 The application's authentication is API-driven. However, to make use of Django's authentication framework, sessions and to store test configurations, the system requires a database. Here is an example for PostgreSQL:
 
 ```bash
@@ -66,39 +80,6 @@ FILE_ROOT = "./output_path/"
 OUTPUT_PATH = './output_path/'
 ```
 
-
-### Configure file generation settings
-
-```bash
-REDIRECT_URL = 'http://127.0.0.1:9090'
-OAUTH_CONSUMER_KEY = '*'
-OAUTH_CONSUMER_SECRET = '*'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '*',
-        'USER': '*',
-        'PASSWORD': '*',
-        'HOST': '*',
-        'PORT': '*',
-    }
-}
-
-
-ADMIN_USERNAME = "*"
-ADMIN_PASSWORD = "*"
-FILE_ROOT = "./output_path/"
-OUTPUT_PATH = './output_path/'
-```
-
-## Initialise database
-
-```bash
-(venv)$ ./apitester/manage.py migrate
-```
-
-
 ## Run the app
 
 ```bash
@@ -112,70 +93,15 @@ The application should be available at `http://localhost:9090`.
 ### Import Data Page
 ![alt text](./Image/page1.PNG "Import sandbox data")
 
-You need to prepare branches.xlsx, counterparties.xlsx, dataset.xlsx and options.xlsx. branches.xlsx involves
-## Static files
+You need to prepare dataset file: counterparties.xlsx, dataset.xlsx and options.xlsx. Sandbox data is picked 
+randomly from these dataset and generated to sandbox data. These files can be assigned in generation page.
+- counterparties.xlsx is dataset of counterparties information. Columns are type, counterparty_name	example_reference, 
+typical_value, typical_frequency, counterparty_logo, counterparty_homepage
+- dataset.xlsx is  dataset of main information, including branches, atms, products, currency
+- options.xlsx has user behavior dataset.
 
-The app's static files, e.g. Javascript, CSS and images need to be collected and made available to a webserver. Run
-
-```bash
-(venv)$ ./apitester/manage.py collectstatic
-```
-
-The output will show where they are collected to (`settings.STATIC_ROOT`).
-
-
-## Web application server
-
-Instead of Django's built-in runserver, you need a proper web application server to run the app, e.g. `gunicorn`. It should have been installed already as a dependency and you can use the provided `gunicorn.conf.py`. Run it like
-
-```bash
-(venv)$ cd apitester/ && gunicorn --config ../gunicorn.conf.py apitester.wsgi 
-```
-
-- `gunicorn` does not start successfully when omitting the directory change and using `apitester.apitester.wsgi` as program.
-- The app's output is logged to `gunicorn`'s error logfile (see `gunicorn.conf.py` for location)
-
-
-## Process control
-
-If you do not want to start the web application server manually, but automatically at boot and also want to restart automatically if it dies, a process control system comes in handy. This package provides configuration files for systemd and supervisor.
-
-### systemd
-
-Stick the provided file `apitester.service` into `/etc/systemd/system/`, edit to suit your installation and start the application (probably as root):
-
-```bash
-# /bin/systemctl start apitester
-```
-
-If it works properly, you might want it to be started at boot:
-
-```bash
-# /bin/systemctl enable apitester
-```
-
-If you need to edit the service file afterwards, it needs to be reloaded as well as the service
-```bash
-# /bin/systemctl daemon-reload
-# /bin/systemctl restart apitester
-```
-
-### supervisor
-
-Stick the provided file `supervisor.apitester.conf` into `/etc/supervisor/conf.d/`, edit to suit your installation and restart supervisor (probably as root):
-
-```bash
-# /bin/systemctl restart supervisor
-```
-
-
-## Webserver
-
-Finally, use a webserver like `nginx` or `apache` as a frontend. It serves static files from the directory where `collectstatic` puts them and acts as a reverse proxy for gunicorn. Stick the provided `nginx.apitester.conf` into `/etc/nginx/sites-enabled/`, edit it and reload the webserver (probably as root):
-
-```bash
-# /bin/systemctl reload nginx
-```
+The output will be three files in output dir which is assigned in generation page. sandbox_pretty.json, 
+counterparty_pretty.json, customers_pretty.json
 
 
 
@@ -196,31 +122,7 @@ Before being able to use `DirectLogin`, the user needs to create a consumer at t
 
 For `GatewayLogin` to work, the user's provider has to be set to `Gateway` in field `resourceuser`.`provider_` in the database. The user also needs to know the pre-shared secret between the gateway and the API.
 
-
-
-# Management
-
-The app should tell you if your logged in user does not have the proper role to execute the management functionality you need. Please use a Super Admin user to login at an API Manager instance or API Explorer and set roles accordingly. To become Super Admin, set the property `super_admin_user_ids` in the API properties file accordingly.
-
-# Usage
-
-1) Login as the user that you will execute the tests as.
-
-2) Create a "profile". 
-
-Enter the API version (e.g. 3.1.0) that you want to test and values for commonly used fields. These values will be used as the defaults in urls and POST bodies but you can change the values for each URL.
-
-3) Save the profile. This will generate tests for every endpoint in the version you specified.
-
-4) Now you can change the URLs / POST bodies and Test each endpoint, all or the selected endpoints.
-
 Note: 
-
-You can change the order in which tests are run.
-
-A user can have multiple test profiles.
-
-
 
 Please submit an issue on GitHub if something bugs you! 
 

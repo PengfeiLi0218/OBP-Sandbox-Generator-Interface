@@ -510,6 +510,7 @@ class DataImportView(LoginRequiredMixin, TemplateView):
             'ADMIN_USERNAME':settings.ADMIN_USERNAME,
             'ADMIN_PASSWORD':settings.ADMIN_PASSWORD,
             'OAUTH_CONSUMER_KEY':settings.OAUTH_CONSUMER_KEY,
+            'OUTPUT_PATH':settings.OUTPUT_PATH,
         }
 
         context.update({
@@ -669,12 +670,13 @@ def ImportJson(request):
     consumer_key = request.POST.get('consumer_key')
     adminUserUsername = request.POST.get('username')
     adminPassword = request.POST.get('password')
+    output_file = request.POST.get('output_file')
 
     from object.Admin import Admin
     admin_user = Admin(adminUserUsername, adminPassword, consumer_key)
     session = admin_user.direct_login(api_host)
 
-    file_json = Admin.load(settings.FILE_ROOT+"sandbox_pretty.json")
+    file_json = Admin.load(output_file+"sandbox_pretty.json")
     url = api_host+"/obp/v3.0.0/sandbox/data-import"
     result2 = session.request('POST', url, json=file_json, verify=settings.VERIFY)
     admin_user.oauth_logout()
@@ -688,14 +690,15 @@ def ImportJson(request):
 def ImportCounterparty(request):
     api_host = request.POST.get('api_host')
     consumer_key = request.POST.get('consumer_key')
+    output_file = request.POST.get('output_file')
 
     from objects.Admin import Admin
     from objects.PostCounterparty import PostCounterparty
-    json_object_counterparty= PostCounterparty.load(settings.FILE_ROOT+"counterparty_pretty.json")
+    json_object_counterparty= PostCounterparty.load(output_file+"counterparty_pretty.json")
 
     counterparty_list = [val for sublist in json_object_counterparty for val in sublist]
 
-    json_object_user=Admin.load(settings.FILE_ROOT+"sandbox_pretty.json")
+    json_object_user=Admin.load(output_file+"sandbox_pretty.json")
 
     for user_dict in json_object_user['users']:
         user = Admin(user_dict['user_name'], user_dict['password'], consumer_key)
@@ -779,9 +782,10 @@ def ImportCustomer(request):
     consumer_key = request.POST.get('consumer_key')
     adminUserUsername = request.POST.get('username')
     adminPassword = request.POST.get('password')
+    output_file = request.POST.get('output_file')
 
-    from object.PostCustomer import PostCustomer
-    json_customers = PostCustomer.load(settings.FILE_ROOT+"/customers_pretty.json")
+    from objects.PostCustomer import PostCustomer
+    json_customers = PostCustomer.load(output_file+"customers_pretty.json")
 
     print("Got {} records".format(len(json_customers)))
 
@@ -805,7 +809,7 @@ def ImportCustomer(request):
 
     from objects.Admin import Admin
     from objects.Bank_Import import Bank_Import
-    json_user = Admin.load(settings.FILE_ROOT+"sandbox_pretty.json")
+    json_user = Admin.load(output_file+"sandbox_pretty.json")
     print("Got {} users".format(len(json_user['users'])))
 
     print("login as user: ")

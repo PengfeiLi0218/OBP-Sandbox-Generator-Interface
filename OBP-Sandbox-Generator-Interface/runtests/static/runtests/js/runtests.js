@@ -34,12 +34,14 @@ $(function() {
 		consumer_key = $('.runner').find('input[name="consumer_key"]').val();
 		username = $('.runner').find('input[name="username"]').val();
 		password = $('.runner').find('input[name="password"]').val();
+		output_file = $('.runner').find('input[name="output_path"]').val();
 
 		$.post('/runtests/import_json', {
 			'api_host': api_host,
 			'consumer_key': consumer_key,
 			'username': username,
 			'password': password,
+			'output_file': output_file,
 			'csrfmiddlewaretoken': window.CSRF
 		}, function (response) {
 			alert("Update Successfully");
@@ -51,12 +53,14 @@ $(function() {
 		consumer_key = $('.runner').find('input[name="consumer_key"]').val();
 		username = $('.runner').find('input[name="username"]').val();
 		password = $('.runner').find('input[name="password"]').val();
+		output_file = $('.runner').find('input[name="output_path"]').val();
 
 		$.post('/runtests/import_counterparty', {
 			'api_host': api_host,
 			'consumer_key': consumer_key,
 			'username': username,
 			'password': password,
+			'output_file': output_file,
 			'csrfmiddlewaretoken': window.CSRF
 		}, function (response) {
 			alert("Update Successfully");
@@ -68,12 +72,14 @@ $(function() {
 		consumer_key = $('.runner').find('input[name="consumer_key"]').val();
 		username = $('.runner').find('input[name="username"]').val();
 		password = $('.runner').find('input[name="password"]').val();
+		output_file = $('.runner').find('input[name="output_path"]').val();
 
 		$.post('/runtests/import_customer', {
 			'api_host': api_host,
 			'consumer_key': consumer_key,
 			'username': username,
 			'password': password,
+			'output_file': output_file,
 			'csrfmiddlewaretoken': window.CSRF
 		}, function (response) {
 			alert("Update Successfully");
