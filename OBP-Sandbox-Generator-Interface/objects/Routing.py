@@ -42,18 +42,18 @@ class Address:
         self.city = city
         self.county = county
         self.state = state
-        self.postcode = postcode
+        self.postcode = str(postcode)
         self.country_code = country_code
 
     def dict(self):
         return {
-            "line1":self.line1,
-            "line2":self.line2,
-            "line3":self.line3,
+            "line_1":self.line1,
+            "line_2":self.line2,
+            "line_3":self.line3,
             "city": self.city,
             "county": self.county,
             "state": self.state,
-            "postcode": self.postcode,
+            "post_code": self.postcode,
             "country_code": self.country_code,
         }
 
