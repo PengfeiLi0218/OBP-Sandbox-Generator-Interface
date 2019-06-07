@@ -1,6 +1,6 @@
-# API Tester
+# OBP-Sandbox-Generator-Interface
 
-This is a Django project to test the Open Bank Project API from the outside.
+This is a Django project to generate sandbox dataset and import them to server.
 
 It currently supports three authentication methods: OAuth1.0a, Gateway Login and Direct Login
 
@@ -13,26 +13,20 @@ Paths below are relative to this README. Files produced during installation or a
 The directory tree might look like:
 
 ```bash
-$ tree -L 2 apitester/
-apitester/
-├── API-Tester
-│   ├── apitester
-│   ├── apitester.service
-│   ├── gunicorn.conf.py
-│   ├── LICENSE
-│   ├── nginx.apitester.conf
-│   ├── NOTICE
-│   ├── README.md
-│   ├── requirements.txt
-├── logs
-├── static-collected
-│   ├── admin
-│   ├── css
-│   ├── img
-│   ├── js
-└── venv
-    ├── bin
-    └── lib
+$ tree -L 2 OBP-Sandbox-Generator-Interface/
+OBP-Sandbox-Generator-Interface/
+├── OBP-Sandbox-Generator-Interface
+│   ├── apigenerator
+│   ├── base
+│   ├── objects
+│   ├── obp
+│   └── runtests
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── NOTICE
+├── gunicorn.conf.py
+└── apigenerator.service
 ```
 
 
@@ -44,80 +38,59 @@ $ source ../venv/bin/activate
 (venv)$ pip install -r requirements.txt
 ```
 
-
-## Configure database
+## Conifguration
+### Configure api host
 
 The application's authentication is API-driven. However, to make use of Django's authentication framework, sessions and to store test configurations, the system requires a database. Here is an example for PostgreSQL:
 
 ```bash
-$ /usr/bin/sudo -iu postgres
-$ psql
-# CREATE DATABASE apitester;
-# CREATE USER apitester WITH PASSWORD '<pw>';
-# GRANT ALL PRIVILEGES ON DATABASE apitester TO apitester;
-\q
-exit
-```
-
-There is also an example using sqlite, see 'configure settings'.
-
-
-## Configure settings
-
-Create and edit `apitester/apitester/local_settings.py`:
-
-### Postgres Example
-
-```python
-# Used internally by Django, can be anything of your choice
-SECRET_KEY = '<random string>'
-# API hostname, e.g. https://api.openbankproject.com
-API_HOST = '<hostname>'
-
-# Consumer key + secret to authenticate the _app_ against the API
-# When the app is created on the API, the redirect URL should point to this
-# host + /obp, e.g. `http://localhost:8000`
-OAUTH_CONSUMER_KEY = '<key>'
-OAUTH_CONSUMER_SECRET = '<secret>'
+REDIRECT_URL = 'http://127.0.0.1:9090'
+OAUTH_CONSUMER_KEY = '*'
+OAUTH_CONSUMER_SECRET = '*'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'apitester',
-        'USER': 'apitester',
-        'PASSWORD': '<pw>',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': '*',
+        'USER': '*',
+        'PASSWORD': '*',
+        'HOST': '*',
+        'PORT': '*',
     }
 }
+
+
+ADMIN_USERNAME = "*"
+ADMIN_PASSWORD = "*"
+FILE_ROOT = "./output_path/"
+OUTPUT_PATH = './output_path/'
 ```
 
-### Sqlite3 Example
-If you're using sqlite:
 
-```python
-import os                                                                        
-BASE_DIR = './'                                                                  
-# Used internally by Django, can be anything of your choice                      
-SECRET_KEY = '<random string>'                                                   
-# API hostname, e.g. https://api.openbankproject.com 
-# API OBP URL                            
-API_HOST = 'http://127.0.0.1:8080'                                                           
-# Consumer key + secret to authenticate the _app_ against the API                
-OAUTH_CONSUMER_KEY = '<key>'                                                     
-OAUTH_CONSUMER_SECRET = '<secret>'                                               
-# Database filename, default is `../db.sqlite3` relative to this file            
-DATABASES = {                                                                    
-    'default': {                                                                 
-        'ENGINE': 'django.db.backends.sqlite3',                                  
-        'NAME': os.path.join(BASE_DIR, '..', '..', 'db.sqlite3'),                
-    }                                                                            
+### Configure file generation settings
+
+```bash
+REDIRECT_URL = 'http://127.0.0.1:9090'
+OAUTH_CONSUMER_KEY = '*'
+OAUTH_CONSUMER_SECRET = '*'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '*',
+        'USER': '*',
+        'PASSWORD': '*',
+        'HOST': '*',
+        'PORT': '*',
+    }
 }
-#API Tester URL
-REDIRECT_URL='http://127.0.0.1:8000'
 
+
+ADMIN_USERNAME = "*"
+ADMIN_PASSWORD = "*"
+FILE_ROOT = "./output_path/"
+OUTPUT_PATH = './output_path/'
 ```
-
 
 ## Initialise database
 
@@ -129,12 +102,12 @@ REDIRECT_URL='http://127.0.0.1:8000'
 ## Run the app
 
 ```bash
-(venv)$ ./apitester/manage.py runserver
+(venv)$ ./apitester/manage.py runserver 9090
 ```
 
-The application should be available at `http://localhost:8000`.
+The application should be available at `http://localhost:9090`.
 
-
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
 # Installation (production)
 
